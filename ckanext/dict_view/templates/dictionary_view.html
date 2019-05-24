@@ -1,0 +1,26 @@
+<div class="dashboard-view" data-module="dashboard-view">
+    <h2>Resource Dictionary</h2>
+    <table class="table table-striped table-bordered table-condensed" data-module="table-toggle-more">
+        <thead>
+        <tr>
+            <th scope="col">Column Name</th>
+            <th scope="col">Original Data Type</th>
+            <th scope="col">Override Type</th>
+            <th scope="col">Custom Label</th>
+            <th scope="col">Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in dictionary %}
+            <tr>
+                <th>{{ row.id }}</th>
+                <td>{{ row.type }}</td>
+                <td>{{ row['info']['type_override']|default('') if row['info']}}</td>
+                <td>{{ row['info']['label']|default('') if row['info']}}</td>
+                <td>{{ row['info']['notes']|default('') if row['info']}}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
